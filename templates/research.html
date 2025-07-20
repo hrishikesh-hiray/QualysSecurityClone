@@ -1,0 +1,383 @@
+{% extends "base.html" %}
+
+{% block title %}Research & Roadmap - CyferTrace Security Platform{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-cyber-dark to-cyber-blue text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Research & Roadmap</h1>
+            <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                Advancing cybersecurity through cutting-edge research and AI-powered innovation
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Research Areas -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Research Focus Areas</h2>
+            <p class="text-lg text-gray-600">Pioneering the future of cybersecurity technology</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- AI/ML Security -->
+            <div class="bg-white rounded-lg shadow-lg border border-gray-200 p-8">
+                <div class="bg-cyber-light p-3 rounded-full w-16 h-16 mb-6 flex items-center justify-center">
+                    <i class="fas fa-brain text-cyber-blue text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">AI & Machine Learning</h3>
+                <p class="text-gray-600 mb-4">
+                    Advanced machine learning algorithms for predictive threat detection, 
+                    behavioral analysis, and automated incident response.
+                </p>
+                <ul class="text-sm text-gray-600 space-y-2">
+                    <li>• Deep learning for malware detection</li>
+                    <li>• Anomaly detection algorithms</li>
+                    <li>• Natural language processing for threat intelligence</li>
+                    <li>• Reinforcement learning for security automation</li>
+                </ul>
+            </div>
+            
+            <!-- TruRisk Analytics -->
+            <div class="bg-white rounded-lg shadow-lg border border-gray-200 p-8">
+                <div class="bg-cyber-light p-3 rounded-full w-16 h-16 mb-6 flex items-center justify-center">
+                    <i class="fas fa-chart-line text-cyber-blue text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">TruRisk Analytics</h3>
+                <p class="text-gray-600 mb-4">
+                    Risk-based prioritization engine that combines vulnerability data with 
+                    business context and threat intelligence.
+                </p>
+                <ul class="text-sm text-gray-600 space-y-2">
+                    <li>• Business impact modeling</li>
+                    <li>• Dynamic risk scoring algorithms</li>
+                    <li>• Asset criticality assessment</li>
+                    <li>• Threat landscape correlation</li>
+                </ul>
+            </div>
+            
+            <!-- Quantum Security -->
+            <div class="bg-white rounded-lg shadow-lg border border-gray-200 p-8">
+                <div class="bg-cyber-light p-3 rounded-full w-16 h-16 mb-6 flex items-center justify-center">
+                    <i class="fas fa-atom text-cyber-blue text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Quantum-Safe Security</h3>
+                <p class="text-gray-600 mb-4">
+                    Preparing for the quantum computing era with post-quantum cryptographic 
+                    algorithms and quantum-resistant security protocols.
+                </p>
+                <ul class="text-sm text-gray-600 space-y-2">
+                    <li>• Post-quantum cryptography</li>
+                    <li>• Quantum key distribution</li>
+                    <li>• Hybrid security models</li>
+                    <li>• Migration strategies</li>
+                </ul>
+            </div>
+            
+            <!-- Zero Trust -->
+            <div class="bg-white rounded-lg shadow-lg border border-gray-200 p-8">
+                <div class="bg-cyber-light p-3 rounded-full w-16 h-16 mb-6 flex items-center justify-center">
+                    <i class="fas fa-shield-alt text-cyber-blue text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Zero Trust Architecture</h3>
+                <p class="text-gray-600 mb-4">
+                    Advanced zero trust implementations with continuous verification, 
+                    micro-segmentation, and adaptive access controls.
+                </p>
+                <ul class="text-sm text-gray-600 space-y-2">
+                    <li>• Identity-centric security models</li>
+                    <li>• Continuous authentication</li>
+                    <li>• Micro-segmentation strategies</li>
+                    <li>• Adaptive policy enforcement</li>
+                </ul>
+            </div>
+            
+            <!-- Cloud Security -->
+            <div class="bg-white rounded-lg shadow-lg border border-gray-200 p-8">
+                <div class="bg-cyber-light p-3 rounded-full w-16 h-16 mb-6 flex items-center justify-center">
+                    <i class="fas fa-cloud-upload-alt text-cyber-blue text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Multi-Cloud Security</h3>
+                <p class="text-gray-600 mb-4">
+                    Unified security management across multiple cloud providers with 
+                    consistent policy enforcement and visibility.
+                </p>
+                <ul class="text-sm text-gray-600 space-y-2">
+                    <li>• Cross-cloud policy management</li>
+                    <li>• Unified security posture</li>
+                    <li>• Cloud-native security tools</li>
+                    <li>• Serverless security models</li>
+                </ul>
+            </div>
+            
+            <!-- IoT Security -->
+            <div class="bg-white rounded-lg shadow-lg border border-gray-200 p-8">
+                <div class="bg-cyber-light p-3 rounded-full w-16 h-16 mb-6 flex items-center justify-center">
+                    <i class="fas fa-microchip text-cyber-blue text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">IoT & Edge Security</h3>
+                <p class="text-gray-600 mb-4">
+                    Securing the expanding IoT ecosystem with lightweight security protocols 
+                    and edge computing protection mechanisms.
+                </p>
+                <ul class="text-sm text-gray-600 space-y-2">
+                    <li>• Lightweight encryption protocols</li>
+                    <li>• Edge security frameworks</li>
+                    <li>• Device identity management</li>
+                    <li>• OT/IT convergence security</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Research Timeline -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">AI/ML Integration Timeline</h2>
+            <p class="text-lg text-gray-600">Our roadmap for advancing AI-powered cybersecurity</p>
+        </div>
+        
+        <div class="relative">
+            <!-- Timeline line -->
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-1 bg-cyber-blue h-full"></div>
+            
+            <!-- Timeline items -->
+            <div class="space-y-12">
+                <!-- Q1 2025 -->
+                <div class="flex items-center">
+                    <div class="w-1/2 pr-8 text-right">
+                        <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-cyber-blue">
+                            <h3 class="text-lg font-bold text-gray-900 mb-2">Q1 2025 - Enhanced ML Models</h3>
+                            <p class="text-gray-600">
+                                Advanced neural networks for vulnerability prediction and threat classification
+                            </p>
+                            <div class="mt-3 text-sm text-cyber-blue font-semibold">✓ In Progress</div>
+                        </div>
+                    </div>
+                    <div class="w-4 h-4 bg-cyber-blue rounded-full relative z-10"></div>
+                    <div class="w-1/2 pl-8"></div>
+                </div>
+                
+                <!-- Q2 2025 -->
+                <div class="flex items-center">
+                    <div class="w-1/2 pr-8"></div>
+                    <div class="w-4 h-4 bg-cyber-blue rounded-full relative z-10"></div>
+                    <div class="w-1/2 pl-8">
+                        <div class="bg-white p-6 rounded-lg shadow-lg border-r-4 border-cyber-blue">
+                            <h3 class="text-lg font-bold text-gray-900 mb-2">Q2 2025 - SSPM Launch</h3>
+                            <p class="text-gray-600">
+                                SaaS Security Posture Management with AI-powered configuration analysis
+                            </p>
+                            <div class="mt-3 text-sm text-yellow-600 font-semibold">⏳ Planned</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Q3 2025 -->
+                <div class="flex items-center">
+                    <div class="w-1/2 pr-8 text-right">
+                        <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-cyber-blue">
+                            <h3 class="text-lg font-bold text-gray-900 mb-2">Q3 2025 - Automated Remediation</h3>
+                            <p class="text-gray-600">
+                                Intelligent patch management with predictive deployment and rollback capabilities
+                            </p>
+                            <div class="mt-3 text-sm text-yellow-600 font-semibold">⏳ Planned</div>
+                        </div>
+                    </div>
+                    <div class="w-4 h-4 bg-cyber-blue rounded-full relative z-10"></div>
+                    <div class="w-1/2 pl-8"></div>
+                </div>
+                
+                <!-- Q4 2025 -->
+                <div class="flex items-center">
+                    <div class="w-1/2 pr-8"></div>
+                    <div class="w-4 h-4 bg-cyber-blue rounded-full relative z-10"></div>
+                    <div class="w-1/2 pl-8">
+                        <div class="bg-white p-6 rounded-lg shadow-lg border-r-4 border-cyber-blue">
+                            <h3 class="text-lg font-bold text-gray-900 mb-2">Q4 2025 - Quantum-Ready Security</h3>
+                            <p class="text-gray-600">
+                                Post-quantum cryptographic implementations and migration tools
+                            </p>
+                            <div class="mt-3 text-sm text-gray-500 font-semibold">🔮 Future</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Research Metrics -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Research Impact</h2>
+            <p class="text-lg text-gray-600">Measuring the effectiveness of our security innovations</p>
+        </div>
+        
+        <!-- Charts Container -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <!-- Threat Detection Accuracy -->
+            <div class="bg-white rounded-lg shadow-lg border border-gray-200 p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-4">AI Threat Detection Accuracy</h3>
+                <canvas id="threatDetectionChart" width="400" height="200"></canvas>
+            </div>
+            
+            <!-- Vulnerability Prediction -->
+            <div class="bg-white rounded-lg shadow-lg border border-gray-200 p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-4">Vulnerability Prediction Success Rate</h3>
+                <canvas id="vulnerabilityChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+        
+        <!-- Key Metrics -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="text-center">
+                <div class="text-4xl font-bold text-cyber-blue mb-2">94.7%</div>
+                <div class="text-gray-600">ML Detection Accuracy</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold text-cyber-blue mb-2">86.2%</div>
+                <div class="text-gray-600">False Positive Reduction</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold text-cyber-blue mb-2">73.5%</div>
+                <div class="text-gray-600">Faster Response Time</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold text-cyber-blue mb-2">92.1%</div>
+                <div class="text-gray-600">Risk Prediction Accuracy</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Research Publications -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Research Publications</h2>
+            <p class="text-lg text-gray-600">Contributing to the global cybersecurity knowledge base</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-2">
+                    "Deep Learning Approaches for Advanced Persistent Threat Detection"
+                </h3>
+                <p class="text-gray-600 mb-4">
+                    Published in IEEE Transactions on Information Forensics and Security, 2024
+                </p>
+                <div class="flex items-center text-sm text-gray-500">
+                    <i class="fas fa-calendar mr-2"></i>
+                    <span>December 2024</span>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-2">
+                    "Risk-Based Vulnerability Management in Cloud Environments"
+                </h3>
+                <p class="text-gray-600 mb-4">
+                    Presented at the International Conference on Cybersecurity, 2024
+                </p>
+                <div class="flex items-center text-sm text-gray-500">
+                    <i class="fas fa-calendar mr-2"></i>
+                    <span>October 2024</span>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-2">
+                    "Automated Security Testing in DevOps Pipelines"
+                </h3>
+                <p class="text-gray-600 mb-4">
+                    Published in Journal of Systems and Software, 2024
+                </p>
+                <div class="flex items-center text-sm text-gray-500">
+                    <i class="fas fa-calendar mr-2"></i>
+                    <span>September 2024</span>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-2">
+                    "Zero Trust Architecture Implementation Strategies"
+                </h3>
+                <p class="text-gray-600 mb-4">
+                    ACM Computing Surveys, Special Issue on Zero Trust Security
+                </p>
+                <div class="flex items-center text-sm text-gray-500">
+                    <i class="fas fa-calendar mr-2"></i>
+                    <span>August 2024</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Threat Detection Chart
+const threatCtx = document.getElementById('threatDetectionChart').getContext('2d');
+new Chart(threatCtx, {
+    type: 'line',
+    data: {
+        labels: ['Q1 2024', 'Q2 2024', 'Q3 2024', 'Q4 2024', 'Q1 2025'],
+        datasets: [{
+            label: 'Detection Accuracy (%)',
+            data: [87.2, 89.5, 91.8, 93.4, 94.7],
+            borderColor: '#0066cc',
+            backgroundColor: 'rgba(0, 102, 204, 0.1)',
+            tension: 0.4,
+            fill: true
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: false,
+                min: 85,
+                max: 100
+            }
+        }
+    }
+});
+
+// Vulnerability Prediction Chart
+const vulnCtx = document.getElementById('vulnerabilityChart').getContext('2d');
+new Chart(vulnCtx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Correctly Predicted', 'Missed', 'False Positives'],
+        datasets: [{
+            data: [92.1, 4.2, 3.7],
+            backgroundColor: ['#0066cc', '#ef4444', '#f59e0b'],
+            borderWidth: 2,
+            borderColor: '#fff'
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }
+});
+</script>
+{% endblock %}

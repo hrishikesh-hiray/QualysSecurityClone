@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block title %}News & Updates - CyferTrace Security Platform{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-cyber-dark to-cyber-blue text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Security News & Updates</h1>
+            <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                Stay informed with the latest cybersecurity insights and platform updates
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Post -->
+{% if posts %}
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-r from-cyber-light to-blue-50 rounded-lg p-8 mb-12">
+            <div class="max-w-4xl">
+                <span class="bg-cyber-blue text-white px-3 py-1 rounded-full text-sm font-medium">Featured</span>
+                <h2 class="text-3xl font-bold text-gray-900 mt-4 mb-4">{{ posts[0].title }}</h2>
+                <p class="text-lg text-gray-600 mb-6">{{ posts[0].excerpt }}</p>
+                <div class="flex items-center text-sm text-gray-500 mb-6">
+                    <i class="fas fa-user mr-2"></i>
+                    <span class="mr-4">{{ posts[0].author }}</span>
+                    <i class="fas fa-calendar mr-2"></i>
+                    <span class="mr-4">{{ posts[0].created_at.strftime('%B %d, %Y') }}</span>
+                    <i class="fas fa-tag mr-2"></i>
+                    <span>{{ posts[0].category }}</span>
+                </div>
+                <button class="bg-cyber-blue text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="toggleArticle('article-0')">
+                    Read Full Article
+                </button>
+            </div>
+        </div>
+        
+        <!-- Full Article Content (Hidden by default) -->
+        <div id="article-0" class="hidden bg-white rounded-lg shadow-lg p-8 mb-8">
+            <div class="prose max-w-none">
+                {{ posts[0].content | replace('\n\n', '</p><p>') | replace('\n', '<br>') | safe }}
+            </div>
+            <button class="mt-6 text-cyber-blue hover:text-blue-700 transition-colors" onclick="toggleArticle('article-0')">
+                <i class="fas fa-chevron-up mr-2"></i>Collapse Article
+            </button>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Recent Posts -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Recent Articles</h2>
+            <p class="text-lg text-gray-600">Latest insights from our security experts</p>
+        </div>
+        
+        {% if posts|length > 1 %}
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {% for post in posts[1:] %}
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="bg-{{ 'blue' if post.category == 'Security' else 'green' if post.category == 'AI & ML' else 'purple' if post.category == 'Infrastructure' else 'yellow' if post.category == 'Compliance' else 'red' }}-100 text-{{ 'blue' if post.category == 'Security' else 'green' if post.category == 'AI & ML' else 'purple' if post.category == 'Infrastructure' else 'yellow' if post.category == 'Compliance' else 'red' }}-800 px-3 py-1 rounded-full text-sm font-medium">
+                            {{ post.category }}
+                        </span>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">{{ post.title }}</h3>
+                    <p class="text-gray-600 mb-4">{{ post.excerpt }}</p>
+                    
+                    <div class="flex items-center text-sm text-gray-500 mb-4">
+                        <i class="fas fa-user mr-2"></i>
+                        <span class="mr-4">{{ post.author }}</span>
+                        <i class="fas fa-calendar mr-2"></i>
+                        <span>{{ post.created_at.strftime('%B %d, %Y') }}</span>
+                    </div>
+                    
+                    <button class="text-cyber-blue hover:text-blue-700 transition-colors font-medium" onclick="toggleArticle('article-{{ loop.index }}')">
+                        Read More <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+                
+                <!-- Full Article Content (Hidden by default) -->
+                <div id="article-{{ loop.index }}" class="hidden border-t border-gray-200 p-6">
+                    <div class="prose max-w-none">
+                        <p>{{ posts[0].content | replace('\n\n', '</p><p>') | replace('\n', '<br>') | safe }}</p>
+                    </div>
+                    <button class="mt-6 text-cyber-blue hover:text-blue-700 transition-colors" onclick="toggleArticle('article-{{ loop.index }}')">
+                        <i class="fas fa-chevron-up mr-2"></i>Collapse Article
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center py-12">
+            <i class="fas fa-newspaper text-gray-400 text-6xl mb-4"></i>
+            <h3 class="text-xl font-semibold text-gray-600 mb-2">No articles available</h3>
+            <p class="text-gray-500">Check back soon for the latest security insights and updates.</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Newsletter Signup -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-cyber-dark rounded-lg p-8 text-center text-white">
+            <h2 class="text-3xl font-bold mb-4">Stay Updated</h2>
+            <p class="text-xl text-gray-300 mb-8">
+                Get the latest cybersecurity insights and platform updates delivered to your inbox
+            </p>
+            <div class="max-w-md mx-auto">
+                <div class="bg-white rounded-lg p-2 flex">
+                    <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 text-gray-900 rounded-l-lg focus:outline-none" disabled>
+                    <button class="bg-cyber-blue text-white px-6 py-2 rounded-r-lg hover:bg-blue-700 transition-colors" disabled>
+                        Subscribe
+                    </button>
+                </div>
+                <p class="text-sm text-gray-400 mt-2">Newsletter feature coming soon</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Security Categories -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Security Topics</h2>
+            <p class="text-lg text-gray-600">Explore articles by category</p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="bg-white rounded-lg shadow p-6 text-center hover:shadow-lg transition-shadow">
+                <div class="bg-blue-100 p-3 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                    <i class="fas fa-shield-alt text-blue-600 text-2xl"></i>
+                </div>
+                <h3 class="font-semibold text-gray-900">Web Security</h3>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-6 text-center hover:shadow-lg transition-shadow">
+                <div class="bg-green-100 p-3 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                    <i class="fas fa-brain text-green-600 text-2xl"></i>
+                </div>
+                <h3 class="font-semibold text-gray-900">AI & ML</h3>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-6 text-center hover:shadow-lg transition-shadow">
+                <div class="bg-purple-100 p-3 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                    <i class="fas fa-cloud text-purple-600 text-2xl"></i>
+                </div>
+                <h3 class="font-semibold text-gray-900">Infrastructure</h3>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-6 text-center hover:shadow-lg transition-shadow">
+                <div class="bg-yellow-100 p-3 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                    <i class="fas fa-clipboard-check text-yellow-600 text-2xl"></i>
+                </div>
+                <h3 class="font-semibold text-gray-900">Compliance</h3>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function toggleArticle(articleId) {
+    const article = document.getElementById(articleId);
+    const isHidden = article.classList.contains('hidden');
+    
+    if (isHidden) {
+        article.classList.remove('hidden');
+        article.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        article.classList.add('hidden');
+    }
+}
+</script>
+{% endblock %}

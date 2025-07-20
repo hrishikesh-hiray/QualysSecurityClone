@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CyferTrace Security Platform{% endblock %}</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cyber-blue': '#0066cc',
+                        'cyber-dark': '#1a365d',
+                        'cyber-light': '#e6f3ff',
+                        'cyber-gray': '#2d3748'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="{{ url_for('index') }}" class="flex items-center">
+                        <i class="fas fa-shield-alt text-cyber-blue text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-cyber-dark">CyferTrace</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="{{ url_for('index') }}" class="text-gray-700 hover:text-cyber-blue transition-colors">Home</a>
+                    <a href="{{ url_for('products') }}" class="text-gray-700 hover:text-cyber-blue transition-colors">Products</a>
+                    <a href="{{ url_for('industries') }}" class="text-gray-700 hover:text-cyber-blue transition-colors">Industries</a>
+                    <a href="{{ url_for('solutions') }}" class="text-gray-700 hover:text-cyber-blue transition-colors">Solutions</a>
+                    <a href="{{ url_for('research') }}" class="text-gray-700 hover:text-cyber-blue transition-colors">Research</a>
+                    <a href="{{ url_for('news') }}" class="text-gray-700 hover:text-cyber-blue transition-colors">News</a>
+                    <a href="{{ url_for('about') }}" class="text-gray-700 hover:text-cyber-blue transition-colors">About</a>
+                    
+                    {% if current_user.is_authenticated %}
+                        {% if current_user.role == 'admin' %}
+                            <a href="{{ url_for('admin_dashboard') }}" class="text-gray-700 hover:text-cyber-blue transition-colors">
+                                <i class="fas fa-cog"></i> Admin
+                            </a>
+                        {% endif %}
+                        <a href="{{ url_for('logout') }}" class="bg-cyber-blue text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">
+                            Logout
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('login') }}" class="bg-cyber-blue text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">
+                            Login
+                        </a>
+                    {% endif %}
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="mobile-menu-button text-gray-700 hover:text-cyber-blue">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="mobile-menu hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="{{ url_for('index') }}" class="block px-3 py-2 text-gray-700 hover:text-cyber-blue">Home</a>
+                <a href="{{ url_for('products') }}" class="block px-3 py-2 text-gray-700 hover:text-cyber-blue">Products</a>
+                <a href="{{ url_for('industries') }}" class="block px-3 py-2 text-gray-700 hover:text-cyber-blue">Industries</a>
+                <a href="{{ url_for('solutions') }}" class="block px-3 py-2 text-gray-700 hover:text-cyber-blue">Solutions</a>
+                <a href="{{ url_for('research') }}" class="block px-3 py-2 text-gray-700 hover:text-cyber-blue">Research</a>
+                <a href="{{ url_for('news') }}" class="block px-3 py-2 text-gray-700 hover:text-cyber-blue">News</a>
+                <a href="{{ url_for('about') }}" class="block px-3 py-2 text-gray-700 hover:text-cyber-blue">About</a>
+                {% if current_user.is_authenticated %}
+                    {% if current_user.role == 'admin' %}
+                        <a href="{{ url_for('admin_dashboard') }}" class="block px-3 py-2 text-gray-700 hover:text-cyber-blue">Admin</a>
+                    {% endif %}
+                    <a href="{{ url_for('logout') }}" class="block px-3 py-2 text-gray-700 hover:text-cyber-blue">Logout</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}" class="block px-3 py-2 text-gray-700 hover:text-cyber-blue">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+                {% for message in messages %}
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Main content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-cyber-dark text-white mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-shield-alt text-2xl mr-2"></i>
+                        <span class="text-xl font-bold">CyferTrace</span>
+                    </div>
+                    <p class="text-gray-300">
+                        Advanced cybersecurity platform providing comprehensive security solutions 
+                        for modern enterprises.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Products</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="{{ url_for('was_scanner') }}" class="hover:text-white">Web Application Security</a></li>
+                        <li><a href="{{ url_for('iac_scanner') }}" class="hover:text-white">Infrastructure as Code</a></li>
+                        <li><span class="text-gray-400">SSPM (Coming Soon)</span></li>
+                        <li><span class="text-gray-400">Patch Management (Coming Soon)</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Industries</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="{{ url_for('industries') }}" class="hover:text-white">Financial Services</a></li>
+                        <li><a href="{{ url_for('industries') }}" class="hover:text-white">Healthcare</a></li>
+                        <li><a href="{{ url_for('industries') }}" class="hover:text-white">Government</a></li>
+                        <li><a href="{{ url_for('industries') }}" class="hover:text-white">Retail & E-commerce</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="{{ url_for('about') }}" class="hover:text-white">About Us</a></li>
+                        <li><a href="{{ url_for('research') }}" class="hover:text-white">Research</a></li>
+                        <li><a href="{{ url_for('news') }}" class="hover:text-white">News & Updates</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-600 mt-8 pt-8 text-center">
+                <p class="text-gray-300">
+                    &copy; 2025 CyferTrace Security Platform. All rights reserved. | 
+                    <span class="font-semibold">Made by Team CyferTrace</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

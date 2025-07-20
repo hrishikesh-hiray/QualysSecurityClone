@@ -1,0 +1,299 @@
+{% extends "base.html" %}
+
+{% block title %}Industries - CyferTrace Security Platform{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-cyber-dark to-cyber-blue text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Industry Solutions</h1>
+            <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                Tailored cybersecurity solutions for every industry vertical
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Industries Grid -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Financial Services -->
+            <div class="bg-white rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
+                <div class="p-8">
+                    <div class="bg-cyber-light p-3 rounded-full w-16 h-16 mb-6 flex items-center justify-center">
+                        <i class="fas fa-university text-cyber-blue text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Financial Services</h3>
+                    <p class="text-gray-600 mb-6">
+                        Comprehensive security solutions for banks, credit unions, and financial institutions. 
+                        Meet PCI-DSS, SOX, and Basel III compliance requirements.
+                    </p>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>PCI-DSS Compliance</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>SOX Compliance</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>Basel III Requirements</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>Real-time Fraud Detection</span>
+                        </div>
+                    </div>
+                    <div class="text-sm text-gray-500">
+                        <strong>Trusted by:</strong> Deutsche Bank, Credit Suisse, Regional Banks
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Healthcare -->
+            <div class="bg-white rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
+                <div class="p-8">
+                    <div class="bg-cyber-light p-3 rounded-full w-16 h-16 mb-6 flex items-center justify-center">
+                        <i class="fas fa-heartbeat text-cyber-blue text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Healthcare</h3>
+                    <p class="text-gray-600 mb-6">
+                        Protect patient data and medical systems with HIPAA-compliant security solutions. 
+                        Specialized tools for healthcare infrastructure protection.
+                    </p>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>HIPAA Compliance</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>Medical Device Security</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>PHI Data Protection</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>EHR Security Assessment</span>
+                        </div>
+                    </div>
+                    <div class="text-sm text-gray-500">
+                        <strong>Trusted by:</strong> Mayo Clinic, Kaiser Permanente, Regional Hospitals
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Government -->
+            <div class="bg-white rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
+                <div class="p-8">
+                    <div class="bg-cyber-light p-3 rounded-full w-16 h-16 mb-6 flex items-center justify-center">
+                        <i class="fas fa-landmark text-cyber-blue text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Government & Public Sector</h3>
+                    <p class="text-gray-600 mb-6">
+                        FedRAMP and FISMA-compliant security solutions for federal, state, and local governments. 
+                        Protect critical infrastructure and citizen data.
+                    </p>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>FedRAMP Compliance</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>FISMA Requirements</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>NIST Cybersecurity Framework</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>Critical Infrastructure Protection</span>
+                        </div>
+                    </div>
+                    <div class="text-sm text-gray-500">
+                        <strong>Trusted by:</strong> Federal Agencies, State Governments, Municipalities
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Retail & E-commerce -->
+            <div class="bg-white rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
+                <div class="p-8">
+                    <div class="bg-cyber-light p-3 rounded-full w-16 h-16 mb-6 flex items-center justify-center">
+                        <i class="fas fa-shopping-cart text-cyber-blue text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Retail & E-commerce</h3>
+                    <p class="text-gray-600 mb-6">
+                        Secure online shopping platforms and protect customer payment data. 
+                        PCI-DSS compliance and fraud prevention solutions.
+                    </p>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>PCI-DSS Compliance</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>E-commerce Platform Security</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>Payment Gateway Protection</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>Customer Data Privacy</span>
+                        </div>
+                    </div>
+                    <div class="text-sm text-gray-500">
+                        <strong>Trusted by:</strong> Major Retailers, E-commerce Platforms, Payment Processors
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Manufacturing -->
+            <div class="bg-white rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
+                <div class="p-8">
+                    <div class="bg-cyber-light p-3 rounded-full w-16 h-16 mb-6 flex items-center justify-center">
+                        <i class="fas fa-industry text-cyber-blue text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Manufacturing</h3>
+                    <p class="text-gray-600 mb-6">
+                        Protect industrial control systems and operational technology. 
+                        Specialized security for Industry 4.0 and IoT environments.
+                    </p>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>OT/IT Security Convergence</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>ICS/SCADA Protection</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>IoT Device Security</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>Supply Chain Security</span>
+                        </div>
+                    </div>
+                    <div class="text-sm text-gray-500">
+                        <strong>Trusted by:</strong> Siemens, BMW, General Electric, Schneider Electric
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Technology -->
+            <div class="bg-white rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
+                <div class="p-8">
+                    <div class="bg-cyber-light p-3 rounded-full w-16 h-16 mb-6 flex items-center justify-center">
+                        <i class="fas fa-laptop-code text-cyber-blue text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Technology & SaaS</h3>
+                    <p class="text-gray-600 mb-6">
+                        Comprehensive security for software companies and SaaS providers. 
+                        DevSecOps integration and cloud-native security solutions.
+                    </p>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>DevSecOps Integration</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>Cloud-Native Security</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>API Security Testing</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>Container Security</span>
+                        </div>
+                    </div>
+                    <div class="text-sm text-gray-500">
+                        <strong>Trusted by:</strong> Adobe, Infosys, Accenture, Tech Startups
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Compliance Frameworks -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Compliance & Standards</h2>
+            <p class="text-lg text-gray-600">Meet industry regulations and security standards</p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+            <div class="text-center">
+                <div class="bg-white p-4 rounded-lg shadow-md mb-2">
+                    <div class="text-2xl font-bold text-cyber-blue">PCI-DSS</div>
+                </div>
+                <div class="text-sm text-gray-600">Payment Card Industry</div>
+            </div>
+            <div class="text-center">
+                <div class="bg-white p-4 rounded-lg shadow-md mb-2">
+                    <div class="text-2xl font-bold text-cyber-blue">HIPAA</div>
+                </div>
+                <div class="text-sm text-gray-600">Healthcare</div>
+            </div>
+            <div class="text-center">
+                <div class="bg-white p-4 rounded-lg shadow-md mb-2">
+                    <div class="text-2xl font-bold text-cyber-blue">SOX</div>
+                </div>
+                <div class="text-sm text-gray-600">Financial Reporting</div>
+            </div>
+            <div class="text-center">
+                <div class="bg-white p-4 rounded-lg shadow-md mb-2">
+                    <div class="text-2xl font-bold text-cyber-blue">GDPR</div>
+                </div>
+                <div class="text-sm text-gray-600">Data Protection</div>
+            </div>
+            <div class="text-center">
+                <div class="bg-white p-4 rounded-lg shadow-md mb-2">
+                    <div class="text-2xl font-bold text-cyber-blue">NIST</div>
+                </div>
+                <div class="text-sm text-gray-600">Cybersecurity Framework</div>
+            </div>
+            <div class="text-center">
+                <div class="bg-white p-4 rounded-lg shadow-md mb-2">
+                    <div class="text-2xl font-bold text-cyber-blue">ISO 27001</div>
+                </div>
+                <div class="text-sm text-gray-600">Information Security</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-16 bg-cyber-blue text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold mb-4">Ready to Secure Your Industry?</h2>
+        <p class="text-xl mb-8">Get started with industry-specific security solutions</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{{ url_for('solutions') }}" class="bg-white text-cyber-blue px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                View Solutions
+            </a>
+            <a href="{{ url_for('products') }}" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-cyber-blue transition-colors">
+                Explore Products
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

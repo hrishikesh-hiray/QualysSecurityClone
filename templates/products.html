@@ -1,0 +1,255 @@
+{% extends "base.html" %}
+
+{% block title %}Products - CyferTrace Security Platform{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-cyber-dark to-cyber-blue text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Security Products</h1>
+            <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                Comprehensive security solutions designed for modern enterprise environments
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Live Products -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Live Security Tools</h2>
+            <p class="text-lg text-gray-600">Production-ready security solutions available now</p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Web Application Security -->
+            <div class="bg-white rounded-lg shadow-xl border border-gray-200">
+                <div class="p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-cyber-light p-3 rounded-full mr-4">
+                            <i class="fas fa-globe text-cyber-blue text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Web Application Security (WAS)</h3>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Live</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-6">
+                        Advanced web application vulnerability scanning powered by OWASP ZAP. 
+                        Detect XSS, SQL injection, and other critical security issues.
+                    </p>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>OWASP Top 10 vulnerability detection</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Automated spider crawling</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>PDF and JSON report generation</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Real-time scan progress tracking</span>
+                        </div>
+                    </div>
+                    
+                    <a href="{{ url_for('was_scanner') }}" class="w-full bg-cyber-blue text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block text-center">
+                        Start Web Scan
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Infrastructure as Code -->
+            <div class="bg-white rounded-lg shadow-xl border border-gray-200">
+                <div class="p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-cyber-light p-3 rounded-full mr-4">
+                            <i class="fas fa-cloud text-cyber-blue text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Infrastructure as Code (IaC)</h3>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Live</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-6">
+                        Secure your cloud infrastructure with Checkov-powered configuration scanning. 
+                        Detect misconfigurations before deployment.
+                    </p>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Terraform and YAML file scanning</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>AWS, Azure, GCP policy checks</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Compliance framework mapping</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Remediation recommendations</span>
+                        </div>
+                    </div>
+                    
+                    <a href="{{ url_for('iac_scanner') }}" class="w-full bg-cyber-blue text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block text-center">
+                        Upload IaC Files
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Upcoming Products -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Coming Soon</h2>
+            <p class="text-lg text-gray-600">Next-generation security tools in development</p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- SSPM -->
+            <div class="bg-white rounded-lg shadow-xl border border-gray-200 opacity-90">
+                <div class="p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-gray-200 p-3 rounded-full mr-4">
+                            <i class="fas fa-building text-gray-500 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">SaaS Security Posture Management</h3>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Coming Soon</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-6">
+                        Comprehensive security posture management for SaaS applications including 
+                        Google Workspace, Microsoft 365, Salesforce, and more.
+                    </p>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-gray-400 mr-3"></i>
+                            <span class="text-gray-500">SaaS application discovery</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-gray-400 mr-3"></i>
+                            <span class="text-gray-500">Configuration assessment</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-gray-400 mr-3"></i>
+                            <span class="text-gray-500">Identity and access management</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-gray-400 mr-3"></i>
+                            <span class="text-gray-500">Data loss prevention integration</span>
+                        </div>
+                    </div>
+                    
+                    <button disabled class="w-full bg-gray-300 text-gray-500 py-3 px-6 rounded-lg font-semibold cursor-not-allowed">
+                        Available Q2 2025
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Patch Management -->
+            <div class="bg-white rounded-lg shadow-xl border border-gray-200 opacity-90">
+                <div class="p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-gray-200 p-3 rounded-full mr-4">
+                            <i class="fas fa-tools text-gray-500 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Patch Management</h3>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Coming Soon</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-6">
+                        Automated patch deployment and rollback system with intelligent scheduling 
+                        and risk assessment capabilities.
+                    </p>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-gray-400 mr-3"></i>
+                            <span class="text-gray-500">Automated patch detection</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-gray-400 mr-3"></i>
+                            <span class="text-gray-500">Risk-based deployment scheduling</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-gray-400 mr-3"></i>
+                            <span class="text-gray-500">Rollback automation</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-gray-400 mr-3"></i>
+                            <span class="text-gray-500">Compliance reporting</span>
+                        </div>
+                    </div>
+                    
+                    <button disabled class="w-full bg-gray-300 text-gray-500 py-3 px-6 rounded-lg font-semibold cursor-not-allowed">
+                        Available Q3 2025
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Integration Section -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Platform Integration</h2>
+            <p class="text-lg text-gray-600">Seamlessly integrate with your existing security stack</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center">
+                <div class="bg-cyber-light p-4 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+                    <i class="fas fa-plug text-cyber-blue text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-4">API Integration</h3>
+                <p class="text-gray-600">
+                    RESTful APIs for seamless integration with existing security tools and workflows
+                </p>
+            </div>
+            
+            <div class="text-center">
+                <div class="bg-cyber-light p-4 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+                    <i class="fas fa-code-branch text-cyber-blue text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-4">CI/CD Integration</h3>
+                <p class="text-gray-600">
+                    Native support for Jenkins, GitLab CI, GitHub Actions, and other CI/CD platforms
+                </p>
+            </div>
+            
+            <div class="text-center">
+                <div class="bg-cyber-light p-4 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+                    <i class="fas fa-bell text-cyber-blue text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-4">Alert Integration</h3>
+                <p class="text-gray-600">
+                    Connect with Slack, Microsoft Teams, PagerDuty, and other notification systems
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

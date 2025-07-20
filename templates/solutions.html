@@ -1,0 +1,319 @@
+{% extends "base.html" %}
+
+{% block title %}Solutions - CyferTrace Security Platform{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-cyber-dark to-cyber-blue text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Security Solutions</h1>
+            <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                Comprehensive cybersecurity strategies for modern enterprise challenges
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Use Cases -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Security Use Cases</h2>
+            <p class="text-lg text-gray-600">Solve your biggest security challenges with proven solutions</p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Cloud Security -->
+            <div class="bg-white rounded-lg shadow-lg border border-gray-200 p-8">
+                <div class="flex items-center mb-6">
+                    <div class="bg-cyber-light p-3 rounded-full mr-4">
+                        <i class="fas fa-cloud-upload-alt text-cyber-blue text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Cloud Security Transformation</h3>
+                </div>
+                
+                <p class="text-gray-600 mb-6">
+                    Secure your cloud migration and multi-cloud environments with comprehensive 
+                    infrastructure scanning and configuration management.
+                </p>
+                
+                <div class="space-y-4 mb-6">
+                    <div class="border-l-4 border-cyber-blue pl-4">
+                        <h4 class="font-semibold text-gray-900">Challenge</h4>
+                        <p class="text-gray-600">Complex cloud configurations leading to security misconfigurations and compliance gaps</p>
+                    </div>
+                    <div class="border-l-4 border-green-500 pl-4">
+                        <h4 class="font-semibold text-gray-900">Solution</h4>
+                        <p class="text-gray-600">Automated IaC scanning, policy enforcement, and continuous compliance monitoring</p>
+                    </div>
+                    <div class="border-l-4 border-yellow-500 pl-4">
+                        <h4 class="font-semibold text-gray-900">Outcome</h4>
+                        <p class="text-gray-600">85% reduction in security misconfigurations and improved cloud security posture</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-cyber-light text-cyber-blue px-3 py-1 rounded-full text-sm">AWS</span>
+                    <span class="bg-cyber-light text-cyber-blue px-3 py-1 rounded-full text-sm">Azure</span>
+                    <span class="bg-cyber-light text-cyber-blue px-3 py-1 rounded-full text-sm">GCP</span>
+                    <span class="bg-cyber-light text-cyber-blue px-3 py-1 rounded-full text-sm">Terraform</span>
+                </div>
+            </div>
+            
+            <!-- DevSecOps -->
+            <div class="bg-white rounded-lg shadow-lg border border-gray-200 p-8">
+                <div class="flex items-center mb-6">
+                    <div class="bg-cyber-light p-3 rounded-full mr-4">
+                        <i class="fas fa-code-branch text-cyber-blue text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">DevSecOps Integration</h3>
+                </div>
+                
+                <p class="text-gray-600 mb-6">
+                    Integrate security into your development lifecycle with automated scanning 
+                    and continuous security monitoring throughout the SDLC.
+                </p>
+                
+                <div class="space-y-4 mb-6">
+                    <div class="border-l-4 border-cyber-blue pl-4">
+                        <h4 class="font-semibold text-gray-900">Challenge</h4>
+                        <p class="text-gray-600">Security testing slows down development cycles and creates bottlenecks</p>
+                    </div>
+                    <div class="border-l-4 border-green-500 pl-4">
+                        <h4 class="font-semibold text-gray-900">Solution</h4>
+                        <p class="text-gray-600">Automated security scanning in CI/CD pipelines with real-time feedback</p>
+                    </div>
+                    <div class="border-l-4 border-yellow-500 pl-4">
+                        <h4 class="font-semibold text-gray-900">Outcome</h4>
+                        <p class="text-gray-600">60% faster deployment cycles with improved security coverage</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-cyber-light text-cyber-blue px-3 py-1 rounded-full text-sm">Jenkins</span>
+                    <span class="bg-cyber-light text-cyber-blue px-3 py-1 rounded-full text-sm">GitLab CI</span>
+                    <span class="bg-cyber-light text-cyber-blue px-3 py-1 rounded-full text-sm">GitHub Actions</span>
+                    <span class="bg-cyber-light text-cyber-blue px-3 py-1 rounded-full text-sm">Docker</span>
+                </div>
+            </div>
+            
+            <!-- Compliance Automation -->
+            <div class="bg-white rounded-lg shadow-lg border border-gray-200 p-8">
+                <div class="flex items-center mb-6">
+                    <div class="bg-cyber-light p-3 rounded-full mr-4">
+                        <i class="fas fa-clipboard-check text-cyber-blue text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Compliance Automation</h3>
+                </div>
+                
+                <p class="text-gray-600 mb-6">
+                    Streamline compliance processes with automated policy enforcement, 
+                    continuous monitoring, and real-time reporting for multiple frameworks.
+                </p>
+                
+                <div class="space-y-4 mb-6">
+                    <div class="border-l-4 border-cyber-blue pl-4">
+                        <h4 class="font-semibold text-gray-900">Challenge</h4>
+                        <p class="text-gray-600">Manual compliance processes are time-consuming and error-prone</p>
+                    </div>
+                    <div class="border-l-4 border-green-500 pl-4">
+                        <h4 class="font-semibold text-gray-900">Solution</h4>
+                        <p class="text-gray-600">Automated compliance monitoring with policy-as-code implementation</p>
+                    </div>
+                    <div class="border-l-4 border-yellow-500 pl-4">
+                        <h4 class="font-semibold text-gray-900">Outcome</h4>
+                        <p class="text-gray-600">90% reduction in compliance preparation time and improved audit readiness</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-cyber-light text-cyber-blue px-3 py-1 rounded-full text-sm">PCI-DSS</span>
+                    <span class="bg-cyber-light text-cyber-blue px-3 py-1 rounded-full text-sm">HIPAA</span>
+                    <span class="bg-cyber-light text-cyber-blue px-3 py-1 rounded-full text-sm">SOX</span>
+                    <span class="bg-cyber-light text-cyber-blue px-3 py-1 rounded-full text-sm">GDPR</span>
+                </div>
+            </div>
+            
+            <!-- Risk Management -->
+            <div class="bg-white rounded-lg shadow-lg border border-gray-200 p-8">
+                <div class="flex items-center mb-6">
+                    <div class="bg-cyber-light p-3 rounded-full mr-4">
+                        <i class="fas fa-chart-line text-cyber-blue text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">TruRisk-Based Prioritization</h3>
+                </div>
+                
+                <p class="text-gray-600 mb-6">
+                    Focus on what matters most with AI-powered risk assessment and 
+                    intelligent vulnerability prioritization based on business impact.
+                </p>
+                
+                <div class="space-y-4 mb-6">
+                    <div class="border-l-4 border-cyber-blue pl-4">
+                        <h4 class="font-semibold text-gray-900">Challenge</h4>
+                        <p class="text-gray-600">Too many vulnerabilities to address, unclear prioritization</p>
+                    </div>
+                    <div class="border-l-4 border-green-500 pl-4">
+                        <h4 class="font-semibold text-gray-900">Solution</h4>
+                        <p class="text-gray-600">AI-powered risk scoring with business context and threat intelligence</p>
+                    </div>
+                    <div class="border-l-4 border-yellow-500 pl-4">
+                        <h4 class="font-semibold text-gray-900">Outcome</h4>
+                        <p class="text-gray-600">75% improvement in remediation efficiency and reduced business risk</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-cyber-light text-cyber-blue px-3 py-1 rounded-full text-sm">AI/ML</span>
+                    <span class="bg-cyber-light text-cyber-blue px-3 py-1 rounded-full text-sm">Threat Intel</span>
+                    <span class="bg-cyber-light text-cyber-blue px-3 py-1 rounded-full text-sm">Risk Scoring</span>
+                    <span class="bg-cyber-light text-cyber-blue px-3 py-1 rounded-full text-sm">CVSS</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technology Platform -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Technology Platform</h2>
+            <p class="text-lg text-gray-600">Built on a foundation of cutting-edge security technologies</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Cloud-Native -->
+            <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+                <div class="bg-cyber-light p-4 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+                    <i class="fas fa-cloud text-cyber-blue text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Cloud-Native Architecture</h3>
+                <p class="text-gray-600 mb-6">
+                    Scalable, resilient platform built for the cloud with microservices architecture 
+                    and containerized deployment.
+                </p>
+                <ul class="text-left text-sm text-gray-600 space-y-2">
+                    <li>• Kubernetes orchestration</li>
+                    <li>• Auto-scaling capabilities</li>
+                    <li>• Multi-region deployment</li>
+                    <li>• 99.9% uptime SLA</li>
+                </ul>
+            </div>
+            
+            <!-- AI/ML -->
+            <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+                <div class="bg-cyber-light p-4 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+                    <i class="fas fa-brain text-cyber-blue text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">AI & Machine Learning</h3>
+                <p class="text-gray-600 mb-6">
+                    Advanced AI models for threat detection, vulnerability prediction, 
+                    and intelligent security automation.
+                </p>
+                <ul class="text-left text-sm text-gray-600 space-y-2">
+                    <li>• Behavioral anomaly detection</li>
+                    <li>• Predictive threat modeling</li>
+                    <li>• Automated response systems</li>
+                    <li>• Continuous learning algorithms</li>
+                </ul>
+            </div>
+            
+            <!-- Integration -->
+            <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+                <div class="bg-cyber-light p-4 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+                    <i class="fas fa-plug text-cyber-blue text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Enterprise Integration</h3>
+                <p class="text-gray-600 mb-6">
+                    Seamless integration with existing security tools, SIEM platforms, 
+                    and enterprise workflows.
+                </p>
+                <ul class="text-left text-sm text-gray-600 space-y-2">
+                    <li>• RESTful API architecture</li>
+                    <li>• SIEM/SOAR integration</li>
+                    <li>• SSO and RBAC support</li>
+                    <li>• Custom webhook support</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Success Stories -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Success Stories</h2>
+            <p class="text-lg text-gray-600">Real results from organizations using CyferTrace</p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Case Study 1 -->
+            <div class="bg-gray-50 rounded-lg p-8">
+                <div class="mb-6">
+                    <div class="text-3xl font-bold text-cyber-blue mb-2">85%</div>
+                    <div class="text-gray-600">Reduction in critical vulnerabilities</div>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Global Financial Institution</h3>
+                <p class="text-gray-600 mb-4">
+                    Implemented comprehensive web application scanning across 500+ applications, 
+                    achieving significant improvement in security posture.
+                </p>
+                <div class="text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i> 6-month implementation
+                </div>
+            </div>
+            
+            <!-- Case Study 2 -->
+            <div class="bg-gray-50 rounded-lg p-8">
+                <div class="mb-6">
+                    <div class="text-3xl font-bold text-cyber-blue mb-2">60%</div>
+                    <div class="text-gray-600">Faster deployment cycles</div>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Technology Company</h3>
+                <p class="text-gray-600 mb-4">
+                    Integrated security scanning into CI/CD pipelines, enabling faster 
+                    development with improved security coverage.
+                </p>
+                <div class="text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i> 3-month implementation
+                </div>
+            </div>
+            
+            <!-- Case Study 3 -->
+            <div class="bg-gray-50 rounded-lg p-8">
+                <div class="mb-6">
+                    <div class="text-3xl font-bold text-cyber-blue mb-2">90%</div>
+                    <div class="text-gray-600">Reduction in compliance prep time</div>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Healthcare Organization</h3>
+                <p class="text-gray-600 mb-4">
+                    Automated HIPAA compliance monitoring and reporting, significantly 
+                    reducing manual effort and improving audit readiness.
+                </p>
+                <div class="text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i> 4-month implementation
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-16 bg-cyber-blue text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold mb-4">Ready to Transform Your Security?</h2>
+        <p class="text-xl mb-8">Start with a free assessment and see how we can help</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{{ url_for('was_scanner') }}" class="bg-white text-cyber-blue px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                Free Security Scan
+            </a>
+            <a href="{{ url_for('products') }}" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-cyber-blue transition-colors">
+                Explore All Products
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

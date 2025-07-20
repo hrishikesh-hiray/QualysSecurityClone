@@ -1,0 +1,322 @@
+{% extends "base.html" %}
+
+{% block title %}Infrastructure as Code Scanner - CyferTrace{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<section class="bg-gradient-to-r from-cyber-dark to-cyber-blue text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <div class="bg-white bg-opacity-20 p-4 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+                <i class="fas fa-cloud text-3xl"></i>
+            </div>
+            <h1 class="text-4xl font-bold mb-4">Infrastructure as Code Scanner</h1>
+            <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                Secure your cloud infrastructure with Checkov-powered configuration analysis
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Scanner Interface -->
+<section class="py-12 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {% if not current_user.is_authenticated %}
+        <div class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded mb-6">
+            <div class="flex items-center">
+                <i class="fas fa-exclamation-triangle mr-2"></i>
+                <span>Please <a href="{{ url_for('login') }}" class="underline font-semibold">login</a> to use the security scanner.</span>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+            <!-- Upload Form -->
+            <div class="p-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Upload IaC Files</h2>
+                
+                <form id="iacForm" class="space-y-6">
+                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-cyber-blue transition-colors" id="dropZone">
+                        <div class="space-y-4">
+                            <div>
+                                <i class="fas fa-cloud-upload-alt text-4xl text-gray-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-lg font-medium text-gray-900">Upload your IaC files</p>
+                                <p class="text-gray-600">Drag and drop files here, or click to browse</p>
+                            </div>
+                            <div>
+                                <input type="file" 
+                                       id="file" 
+                                       name="file" 
+                                       accept=".tf,.yaml,.yml,.json" 
+                                       multiple
+                                       {% if not current_user.is_authenticated %}disabled{% endif %}
+                                       class="hidden">
+                                <button type="button" 
+                                        onclick="document.getElementById('file').click()"
+                                        {% if not current_user.is_authenticated %}disabled{% endif %}
+                                        class="bg-cyber-blue text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed">
+                                    Choose Files
+                                </button>
+                            </div>
+                            <div class="text-sm text-gray-500">
+                                Supported formats: Terraform (.tf), YAML (.yaml, .yml), JSON (.json)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- File List -->
+                    <div id="fileList" class="hidden space-y-2">
+                        <h3 class="text-sm font-medium text-gray-700">Selected Files:</h3>
+                        <div id="fileItems" class="space-y-2">
+                            <!-- File items will be added here -->
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Cloud Provider
+                            </label>
+                            <select name="cloud_provider" 
+                                    {% if not current_user.is_authenticated %}disabled{% endif %}
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyber-blue {{ 'bg-gray-100' if not current_user.is_authenticated else '' }}">
+                                <option value="auto">Auto-detect</option>
+                                <option value="aws">Amazon Web Services (AWS)</option>
+                                <option value="azure">Microsoft Azure</option>
+                                <option value="gcp">Google Cloud Platform (GCP)</option>
+                                <option value="kubernetes">Kubernetes</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Compliance Framework
+                            </label>
+                            <select name="compliance_framework" 
+                                    {% if not current_user.is_authenticated %}disabled{% endif %}
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyber-blue {{ 'bg-gray-100' if not current_user.is_authenticated else '' }}">
+                                <option value="all">All Frameworks</option>
+                                <option value="pci">PCI-DSS</option>
+                                <option value="hipaa">HIPAA</option>
+                                <option value="sox">SOX</option>
+                                <option value="nist">NIST</option>
+                                <option value="cis">CIS Benchmarks</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="bg-purple-50 rounded-lg p-4">
+                        <h3 class="text-sm font-medium text-purple-800 mb-2">What we'll check:</h3>
+                        <ul class="text-sm text-purple-700 space-y-1">
+                            <li>• Security group misconfigurations</li>
+                            <li>• Unencrypted storage and databases</li>
+                            <li>• IAM policy and permission issues</li>
+                            <li>• Network security and access controls</li>
+                            <li>• Compliance framework violations</li>
+                        </ul>
+                    </div>
+
+                    <button type="submit" 
+                            id="scanButton"
+                            {% if not current_user.is_authenticated %}disabled{% endif %}
+                            class="w-full bg-cyber-blue text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center">
+                        <i class="fas fa-shield-alt mr-2"></i>
+                        Scan Infrastructure
+                    </button>
+                </form>
+            </div>
+
+            <!-- Progress Section (Initially Hidden) -->
+            <div id="scanProgress" class="hidden border-t border-gray-200 p-8">
+                <div class="text-center">
+                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-cyber-blue mx-auto mb-4"></div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Analyzing Infrastructure</h3>
+                    <p id="progressText" class="text-gray-600 mb-4">Processing configuration files...</p>
+                    
+                    <!-- Progress Bar -->
+                    <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
+                        <div id="progressBar" class="bg-cyber-blue h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+                    </div>
+                    
+                    <div class="text-sm text-gray-500">
+                        <p>Scan ID: <span id="scanId" class="font-mono"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section (Initially Hidden) -->
+            <div id="scanResults" class="hidden border-t border-gray-200">
+                <div class="p-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-bold text-gray-900">Configuration Analysis Results</h3>
+                        <div class="flex space-x-2">
+                            <button onclick="downloadReport('json')" 
+                                    class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm">
+                                <i class="fas fa-file-code mr-1"></i> JSON
+                            </button>
+                            <button onclick="downloadReport('pdf')" 
+                                    class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors text-sm">
+                                <i class="fas fa-file-pdf mr-1"></i> PDF
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Summary -->
+                    <div id="resultsSummary" class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                        <!-- Summary cards will be populated by JavaScript -->
+                    </div>
+
+                    <!-- Issues List -->
+                    <div id="issuesList">
+                        <!-- Issues will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Supported Files -->
+        <div class="mt-12 bg-white rounded-lg shadow-lg p-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Supported Infrastructure Types</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center p-4 border rounded-lg">
+                    <div class="bg-orange-100 p-3 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                        <i class="fab fa-aws text-orange-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">AWS</h3>
+                    <p class="text-sm text-gray-600">CloudFormation, Terraform, CDK</p>
+                </div>
+                
+                <div class="text-center p-4 border rounded-lg">
+                    <div class="bg-blue-100 p-3 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                        <i class="fab fa-microsoft text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Azure</h3>
+                    <p class="text-sm text-gray-600">ARM Templates, Terraform</p>
+                </div>
+                
+                <div class="text-center p-4 border rounded-lg">
+                    <div class="bg-red-100 p-3 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                        <i class="fab fa-google text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">GCP</h3>
+                    <p class="text-sm text-gray-600">Deployment Manager, Terraform</p>
+                </div>
+                
+                <div class="text-center p-4 border rounded-lg">
+                    <div class="bg-purple-100 p-3 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-dharmachakra text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Kubernetes</h3>
+                    <p class="text-sm text-gray-600">YAML Manifests, Helm Charts</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/scanner.js') }}"></script>
+<script>
+// Initialize IaC Scanner
+const iacScanner = new SecurityScanner('iac');
+
+// File handling
+const fileInput = document.getElementById('file');
+const dropZone = document.getElementById('dropZone');
+const fileList = document.getElementById('fileList');
+const fileItems = document.getElementById('fileItems');
+
+fileInput.addEventListener('change', handleFiles);
+
+// Drag and drop handlers
+dropZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    dropZone.classList.add('border-cyber-blue', 'bg-blue-50');
+});
+
+dropZone.addEventListener('dragleave', (e) => {
+    e.preventDefault();
+    dropZone.classList.remove('border-cyber-blue', 'bg-blue-50');
+});
+
+dropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropZone.classList.remove('border-cyber-blue', 'bg-blue-50');
+    
+    const files = e.dataTransfer.files;
+    fileInput.files = files;
+    handleFiles();
+});
+
+function handleFiles() {
+    const files = fileInput.files;
+    
+    if (files.length > 0) {
+        fileList.classList.remove('hidden');
+        fileItems.innerHTML = '';
+        
+        Array.from(files).forEach((file, index) => {
+            const fileItem = document.createElement('div');
+            fileItem.className = 'flex items-center justify-between p-3 bg-gray-50 rounded-lg';
+            fileItem.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-file-code text-purple-600 mr-2"></i>
+                    <span class="text-sm font-medium">${file.name}</span>
+                    <span class="text-xs text-gray-500 ml-2">(${formatFileSize(file.size)})</span>
+                </div>
+                <button type="button" onclick="removeFile(${index})" class="text-red-600 hover:text-red-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            fileItems.appendChild(fileItem);
+        });
+    } else {
+        fileList.classList.add('hidden');
+    }
+}
+
+function removeFile(index) {
+    const dt = new DataTransfer();
+    const files = fileInput.files;
+    
+    for (let i = 0; i < files.length; i++) {
+        if (i !== index) {
+            dt.items.add(files[i]);
+        }
+    }
+    
+    fileInput.files = dt.files;
+    handleFiles();
+}
+
+function formatFileSize(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}
+
+document.getElementById('iacForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    if (fileInput.files.length === 0) {
+        alert('Please select at least one file to scan.');
+        return;
+    }
+    
+    const formData = new FormData(this);
+    iacScanner.startScan('/api/scan/iac', formData);
+});
+
+function downloadReport(format) {
+    if (iacScanner.currentScanId) {
+        window.location.href = `/api/scan/${iacScanner.currentScanId}/report/${format}`;
+    }
+}
+</script>
+{% endblock %}
