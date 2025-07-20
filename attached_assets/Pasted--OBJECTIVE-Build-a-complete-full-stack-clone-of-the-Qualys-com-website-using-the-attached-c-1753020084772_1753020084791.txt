@@ -1,0 +1,108 @@
+🔧 OBJECTIVE:
+Build a **complete, full-stack clone** of the Qualys.com website using the attached company report PDF as reference.
+
+The website must include:
+- A modern frontend mimicking Qualys.com design
+- A working Python backend
+- 2 live security tools (WAS + IaC)
+- 2 upcoming tools (SSPM + Patch Management)
+- Full content + research integration
+- Admin dashboard, blog, and charts
+- No contact information
+- Footer should say: "Made by Team CyferTrace"
+
+---
+
+📦 FUNCTIONAL REQUIREMENTS:
+
+🔹 1. ✅ FRONTEND
+- Use **Tailwind CSS** or **Bootstrap 5**
+- Build the following responsive pages:
+  - **Home** (Mission, client logos, awards)
+  - **Products** (Live tools + upcoming ones)
+  - **Industries** (Finance, Healthcare, Govt., etc.)
+  - **Solutions** (Use cases per sector)
+  - **Research & Roadmap** (AI, ML, risk analytics)
+  - **News / Blog** (Add dummy articles)
+  - **About**
+  - **Admin Dashboard**
+- Match the style of Qualys.com with:
+  - Full-width hero banners
+  - Modern font and color schemes
+  - Sticky navbar and footer
+- 🔒 Absolutely no contact forms, emails, or contact info anywhere.
+
+🔹 2. ✅ BACKEND (Python)
+- Use **Flask** or **FastAPI**
+- Implement two working tools:
+  a. **Web Application Security (WAS)**:
+     - Use headless **OWASP ZAP**
+     - Accepts URLs/APIs
+     - Scans for vulnerabilities (e.g., XSS, SQLi)
+     - Returns structured results
+     - Generates downloadable **PDF** and **JSON** reports
+  b. **Infrastructure as Code (IaC)**:
+     - Use **Checkov**
+     - Accepts Terraform/YAML uploads
+     - Scans configs for misconfigurations
+     - Displays results with severity + remediation tips
+     - Generates downloadable **PDF** and **JSON**
+
+🔹 3. ✅ UPCOMING TOOLS (Shown with “Coming Soon” tags)
+- Display as disabled cards under “Products” with short descriptions:
+  1. **SaaS Security Posture Management (SSPM)**
+     - Monitors SaaS apps like Google Workspace
+  2. **Patch Management (PM)**
+     - Automates patch deployment and rollback
+
+🔹 4. ✅ CONTENT & DATA FROM PDF
+- Integrate all information from the Qualys PDF:
+  - Full product suite
+  - Clients (e.g., Adobe, Infosys, Lufthansa)
+  - Strategic initiatives (AI, automation, TruRisk)
+  - Compliance standards (PCI-DSS, HIPAA, SOX)
+  - Industry use cases and supported sectors
+  - Technology platform (cloud-native, TruRisk, integrations)
+  - Research outlook, market trends
+
+🔹 5. ✅ ADVANCED FEATURES (MANDATORY)
+- **Admin Dashboard**:
+  - Simple hardcoded login
+  - View scan history (WAS + IaC)
+  - List uploaded files/URLs
+  - Ability to edit blog content or add new upcoming tools
+- **Research Hub**:
+  - AI/ML integration timeline
+  - Risk-based prioritization (TruRisk)
+  - Charts and graphs using **Chart.js** or **Recharts**
+- **Downloadable Reports**:
+  - WAS + IaC scans must generate both **PDF** (use `pdfkit` or `reportlab`) and **JSON**
+- **Blog / News Section**:
+  - Display 3–5 dummy posts on threat trends, tool updates, cyber insights
+
+---
+
+📁 ARCHITECTURE:
+Let the AI choose the optimal folder structure (e.g., `/backend/`, `/frontend/`, `/templates/`, `/routes/`, `/static/`).
+
+---
+
+⚙️ SYSTEM CONSTRAINTS:
+- Entirely built using **open-source tools**
+- Must run in **Replit** (no Docker)
+- Backend = Python (Flask or FastAPI)
+- Frontend = HTML, JS, Tailwind/Bootstrap
+- Vulnerability tools: OWASP ZAP, Checkov CLI
+
+---
+
+🔚 FINAL NOTES:
+- ✅ Footer of every page must say:  
+  **“Made by Team CyferTrace”**
+- ❌ No contact info or email anywhere
+- 📌 All tools, content, and UI must be fully integrated and testable
+
+---
+
+🎯 END GOAL:
+A fully operational, visually identical Qualys-style cybersecurity platform clone — with two working tools (WAS & IaC), two upcoming tools, full-stack integration, and dynamic reports. Professional-grade, team-branded, and demo-ready.
