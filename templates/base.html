@@ -25,7 +25,8 @@
                         'cyber-blue': '#3B5998',
                         'cyber-blue-dark': '#2B4788',
                         'cyber-blue-light': '#4A69B8',
-                        'cyber-dark': '#1a365d',
+                        'cyber-dark': '#1a202c',
+                        'cyber-darker': '#0f1419',
                         'cyber-light': '#E8F4FD',
                         'cyber-gray': '#2d3748'
                     }
@@ -34,49 +35,58 @@
         }
     </script>
 </head>
-<body class="bg-gray-50">
+<body>
+    <!-- Animated Background Shapes -->
+    <div class="bg-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
+    <nav class="nav-glass sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
+            <div class="flex justify-between h-20">
                 <div class="flex items-center">
-                    <a href="{{ url_for('index') }}" class="flex items-center">
-                        <img src="{{ url_for('static', filename='images/cyfer-logo.png') }}" alt="CyferTrace" class="h-10 w-10 mr-3">
+                    <a href="{{ url_for('index') }}" class="flex items-center group">
+                        <div class="relative">
+                            <img src="{{ url_for('static', filename='images/cyfer-logo.png') }}" alt="CyferTrace" class="h-12 w-12 mr-4 group-hover:scale-105 transition-transform">
+                            <div class="absolute inset-0 bg-gradient-to-r from-cyber-blue to-cyber-blue-light rounded-full opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                        </div>
                         <div class="flex flex-col">
-                            <span class="text-xl font-bold text-cyber-dark">CYFER TRACE</span>
-                            <span class="text-xs text-gray-600 -mt-1">Empowering Cybersecurity through AI & Automation</span>
+                            <span class="text-2xl font-bold gradient-text-blue">CYFER TRACE</span>
+                            <span class="text-sm text-gray-400 -mt-1 font-medium">AI-Powered Cybersecurity</span>
                         </div>
                     </a>
                 </div>
                 
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="{{ url_for('index') }}" class="text-gray-700 hover:text-cyber-blue transition-colors">Home</a>
-                    <a href="{{ url_for('products') }}" class="text-gray-700 hover:text-cyber-blue transition-colors">Products</a>
-                    <a href="{{ url_for('industries') }}" class="text-gray-700 hover:text-cyber-blue transition-colors">Industries</a>
-                    <a href="{{ url_for('solutions') }}" class="text-gray-700 hover:text-cyber-blue transition-colors">Solutions</a>
-                    <a href="{{ url_for('research') }}" class="text-gray-700 hover:text-cyber-blue transition-colors">Research</a>
-                    <a href="{{ url_for('news') }}" class="text-gray-700 hover:text-cyber-blue transition-colors">News</a>
-                    <a href="{{ url_for('about') }}" class="text-gray-700 hover:text-cyber-blue transition-colors">About</a>
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="{{ url_for('index') }}" class="nav-link text-gray-300 hover:text-white font-medium px-3 py-2">Home</a>
+                    <a href="{{ url_for('products') }}" class="nav-link text-gray-300 hover:text-white font-medium px-3 py-2">Products</a>
+                    <a href="{{ url_for('industries') }}" class="nav-link text-gray-300 hover:text-white font-medium px-3 py-2">Industries</a>
+                    <a href="{{ url_for('solutions') }}" class="nav-link text-gray-300 hover:text-white font-medium px-3 py-2">Solutions</a>
+                    <a href="{{ url_for('research') }}" class="nav-link text-gray-300 hover:text-white font-medium px-3 py-2">Research</a>
+                    <a href="{{ url_for('news') }}" class="nav-link text-gray-300 hover:text-white font-medium px-3 py-2">News</a>
+                    <a href="{{ url_for('about') }}" class="nav-link text-gray-300 hover:text-white font-medium px-3 py-2">About</a>
                     
                     {% if current_user.is_authenticated %}
                         {% if current_user.role == 'admin' %}
-                            <a href="{{ url_for('admin_dashboard') }}" class="text-gray-700 hover:text-cyber-blue transition-colors">
-                                <i class="fas fa-cog"></i> Admin
+                            <a href="{{ url_for('admin_dashboard') }}" class="nav-link text-gray-300 hover:text-white font-medium px-3 py-2">
+                                <i class="fas fa-cog mr-2"></i>Admin
                             </a>
                         {% endif %}
-                        <a href="{{ url_for('logout') }}" class="bg-cyber-blue text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">
-                            Logout
+                        <a href="{{ url_for('logout') }}" class="btn-outline px-6 py-2 text-sm font-medium">
+                            <i class="fas fa-sign-out-alt mr-2"></i>Logout
                         </a>
                     {% else %}
-                        <a href="{{ url_for('login') }}" class="bg-cyber-blue text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">
-                            Login
+                        <a href="{{ url_for('login') }}" class="btn-cyber px-6 py-2 text-sm font-medium">
+                            <i class="fas fa-sign-in-alt mr-2"></i>Login
                         </a>
                     {% endif %}
                 </div>
                 
                 <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button class="mobile-menu-button text-gray-700 hover:text-cyber-blue">
+                <div class="lg:hidden flex items-center">
+                    <button class="mobile-menu-button text-gray-300 hover:text-white p-2">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
@@ -84,22 +94,29 @@
         </div>
         
         <!-- Mobile menu -->
-        <div class="mobile-menu hidden md:hidden bg-white border-t">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="{{ url_for('index') }}" class="block px-3 py-2 text-gray-700 hover:text-cyber-blue">Home</a>
-                <a href="{{ url_for('products') }}" class="block px-3 py-2 text-gray-700 hover:text-cyber-blue">Products</a>
-                <a href="{{ url_for('industries') }}" class="block px-3 py-2 text-gray-700 hover:text-cyber-blue">Industries</a>
-                <a href="{{ url_for('solutions') }}" class="block px-3 py-2 text-gray-700 hover:text-cyber-blue">Solutions</a>
-                <a href="{{ url_for('research') }}" class="block px-3 py-2 text-gray-700 hover:text-cyber-blue">Research</a>
-                <a href="{{ url_for('news') }}" class="block px-3 py-2 text-gray-700 hover:text-cyber-blue">News</a>
-                <a href="{{ url_for('about') }}" class="block px-3 py-2 text-gray-700 hover:text-cyber-blue">About</a>
+        <div class="mobile-menu hidden lg:hidden">
+            <div class="px-4 pt-4 pb-6 space-y-3 glass border-t border-gray-700">
+                <a href="{{ url_for('index') }}" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-colors">Home</a>
+                <a href="{{ url_for('products') }}" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-colors">Products</a>
+                <a href="{{ url_for('industries') }}" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-colors">Industries</a>
+                <a href="{{ url_for('solutions') }}" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-colors">Solutions</a>
+                <a href="{{ url_for('research') }}" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-colors">Research</a>
+                <a href="{{ url_for('news') }}" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-colors">News</a>
+                <a href="{{ url_for('about') }}" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-colors">About</a>
+                
                 {% if current_user.is_authenticated %}
                     {% if current_user.role == 'admin' %}
-                        <a href="{{ url_for('admin_dashboard') }}" class="block px-3 py-2 text-gray-700 hover:text-cyber-blue">Admin</a>
+                        <a href="{{ url_for('admin_dashboard') }}" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-colors">
+                            <i class="fas fa-cog mr-2"></i>Admin
+                        </a>
                     {% endif %}
-                    <a href="{{ url_for('logout') }}" class="block px-3 py-2 text-gray-700 hover:text-cyber-blue">Logout</a>
+                    <a href="{{ url_for('logout') }}" class="block px-4 py-3 btn-outline text-center">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                    </a>
                 {% else %}
-                    <a href="{{ url_for('login') }}" class="block px-3 py-2 text-gray-700 hover:text-cyber-blue">Login</a>
+                    <a href="{{ url_for('login') }}" class="block px-4 py-3 btn-cyber text-center">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Login
+                    </a>
                 {% endif %}
             </div>
         </div>
