@@ -22,9 +22,11 @@
             theme: {
                 extend: {
                     colors: {
-                        'cyber-blue': '#0066cc',
+                        'cyber-blue': '#3B5998',
+                        'cyber-blue-dark': '#2B4788',
+                        'cyber-blue-light': '#4A69B8',
                         'cyber-dark': '#1a365d',
-                        'cyber-light': '#e6f3ff',
+                        'cyber-light': '#E8F4FD',
                         'cyber-gray': '#2d3748'
                     }
                 }
@@ -39,8 +41,11 @@
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
                     <a href="{{ url_for('index') }}" class="flex items-center">
-                        <i class="fas fa-shield-alt text-cyber-blue text-2xl mr-2"></i>
-                        <span class="text-xl font-bold text-cyber-dark">CyferTrace</span>
+                        <img src="{{ url_for('static', filename='images/cyfer-logo.png') }}" alt="CyferTrace" class="h-10 w-10 mr-3">
+                        <div class="flex flex-col">
+                            <span class="text-xl font-bold text-cyber-dark">CYFER TRACE</span>
+                            <span class="text-xs text-gray-600 -mt-1">Empowering Cybersecurity through AI & Automation</span>
+                        </div>
                     </a>
                 </div>
                 

@@ -2,20 +2,27 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="bg-gradient-to-r from-cyber-dark to-cyber-blue text-white">
+<section class="hero-gradient text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div class="text-center">
+            <div class="flex justify-center mb-8">
+                <img src="{{ url_for('static', filename='images/cyfer-logo.png') }}" alt="CyferTrace" class="h-20 w-20">
+            </div>
             <h1 class="text-4xl md:text-6xl font-bold mb-6">
-                Next-Generation Cybersecurity Platform
+                CYFER TRACE
             </h1>
-            <p class="text-xl md:text-2xl mb-8 text-gray-200">
-                Comprehensive security solutions powered by AI and machine learning
+            <p class="text-xl md:text-2xl mb-4 text-gray-200">
+                Empowering Cybersecurity through AI & Automation
+            </p>
+            <p class="text-lg mb-8 text-gray-300 max-w-3xl mx-auto">
+                Next-generation security platform providing comprehensive vulnerability scanning, 
+                infrastructure analysis, and AI-powered threat intelligence for modern enterprises.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="{{ url_for('products') }}" class="bg-white text-cyber-blue px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                <a href="{{ url_for('products') }}" class="btn-cyber px-8 py-4 rounded-lg font-semibold text-lg">
                     Explore Products
                 </a>
-                <a href="{{ url_for('was_scanner') }}" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-cyber-blue transition-colors">
+                <a href="{{ url_for('was_scanner') }}" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-cyber-blue transition-colors">
                     Try Free Scan
                 </a>
             </div>

@@ -15,12 +15,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #0066cc;
+    background: #3B5998;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #0052a3;
+    background: #2B4788;
 }
 
 /* Loading spinner animation */
@@ -49,10 +49,29 @@
 
 /* Gradient text effect */
 .gradient-text {
-    background: linear-gradient(135deg, #0066cc, #3b82f6);
+    background: linear-gradient(135deg, #3B5998, #4A69B8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+/* Hero section with brand colors */
+.hero-gradient {
+    background: linear-gradient(135deg, #3B5998 0%, #2B4788 100%);
+}
+
+/* Custom brand button styles */
+.btn-cyber {
+    background: linear-gradient(135deg, #3B5998, #4A69B8);
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-cyber:hover {
+    background: linear-gradient(135deg, #2B4788, #3B5998);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(59, 89, 152, 0.3);
 }
 
 /* Card hover effects */
