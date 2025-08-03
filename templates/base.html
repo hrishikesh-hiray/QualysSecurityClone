@@ -47,14 +47,14 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
-                    <a href="{{ url_for('index') }}" class="flex items-center group">
-                        <div class="relative">
-                            <img src="{{ url_for('static', filename='images/cyfer-logo.png') }}" alt="CyferTrace" class="h-12 w-12 mr-4 group-hover:scale-105 transition-transform">
+                    <a href="{{ url_for('index') }}" class="flex items-center group bg-cyber-dark rounded-2xl px-4 py-2 shadow-cyber" style="min-width:220px; max-width:100%; overflow:hidden;">
+                        <div class="relative flex-shrink-0">
+                            <img src="{{ url_for('static', filename='images/cyfer-logo.png') }}" alt="CyferTrace" class="h-12 w-12 mr-3 group-hover:scale-105 transition-transform">
                             <div class="absolute inset-0 bg-gradient-to-r from-cyber-blue to-cyber-blue-light rounded-full opacity-0 group-hover:opacity-20 transition-opacity"></div>
                         </div>
-                        <div class="flex flex-col">
-                            <span class="text-2xl font-bold gradient-text-blue">CYFER TRACE</span>
-                            <span class="text-sm text-gray-400 -mt-1 font-medium">AI-Powered Cybersecurity</span>
+                        <div class="flex flex-col flex-shrink min-w-0">
+                            <span class="text-2xl font-bold gradient-text-blue truncate leading-tight">CYFER TRACE</span>
+                            <span class="text-xs text-gray-300 font-medium truncate">AI-Powered Cybersecurity</span>
                         </div>
                     </a>
                 </div>
@@ -70,12 +70,12 @@
                     
                     {% if current_user.is_authenticated %}
                         {% if current_user.role == 'admin' %}
-                            <a href="{{ url_for('admin_dashboard') }}" class="nav-link text-gray-300 hover:text-white font-medium px-3 py-2">
-                                <i class="fas fa-cog mr-2"></i>Admin
+                            <a href="{{ url_for('admin_dashboard') }}" class="nav-link text-gray-300 hover:text-white font-medium px-3 py-2 flex items-center gap-1">
+                                <i class="fas fa-cog"></i><span>Admin</span>
                             </a>
                         {% endif %}
-                        <a href="{{ url_for('logout') }}" class="btn-outline px-6 py-2 text-sm font-medium">
-                            <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                        <a href="{{ url_for('logout') }}" class="btn-outline px-5 py-2 text-sm font-medium ml-2 flex items-center gap-1" style="margin-top:2px;">
+                            <i class="fas fa-sign-out-alt"></i><span>Logout</span>
                         </a>
                     {% else %}
                         <a href="{{ url_for('login') }}" class="btn-cyber px-6 py-2 text-sm font-medium">

@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual environments
+venv/
+ENV/
+.env/
+.venv/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Database
+*.sqlite3
+*.db
+instance/
+
+# Flask
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Reports and uploads
+reports/
+uploads/
+
+# Environment
+.env
+.env.*
+
+# Misc
+*.bak
+*.swp
+*.swo
+
+# Node
+node_modules/
+
+# Lock files
+poetry.lock
+Pipfile.lock
+uv.lock

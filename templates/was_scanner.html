@@ -4,14 +4,20 @@
 
 {% block content %}
 <!-- Header -->
-<section class="bg-gradient-to-r from-cyber-dark to-cyber-blue text-white py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-            <div class="bg-white bg-opacity-20 p-4 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center">
-                <i class="fas fa-globe text-3xl"></i>
+<section class="bg-gradient-to-r from-cyber-dark to-cyber-blue text-white py-8 md:py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div class="flex items-center gap-4 md:gap-8 flex-shrink-0 justify-center md:justify-start">
+            <div class="bg-white bg-opacity-20 p-4 rounded-full w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
+                <i class="fas fa-globe text-2xl md:text-3xl"></i>
             </div>
-            <h1 class="text-4xl font-bold mb-4">Web Application Security Scanner</h1>
-            <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+            <div class="flex flex-col items-center md:items-start">
+                <h1 class="text-3xl md:text-4xl font-bold leading-tight mb-1">CYFER TRACE</h1>
+                <span class="text-base md:text-lg font-medium tracking-wide">AI-Powered Cybersecurity</span>
+            </div>
+        </div>
+        <div class="flex-1 text-center md:text-right mt-4 md:mt-0">
+            <h2 class="text-2xl md:text-3xl font-bold mb-2">Web Application Security Scanner</h2>
+            <p class="text-lg md:text-xl text-gray-200 max-w-2xl md:ml-auto">
                 Comprehensive vulnerability assessment powered by OWASP ZAP
             </p>
         </div>
@@ -47,7 +53,7 @@
                                    placeholder="https://example.com" 
                                    required
                                    {% if not current_user.is_authenticated %}disabled{% endif %}
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyber-blue focus:border-transparent {{ 'bg-gray-100' if not current_user.is_authenticated else '' }}">
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyber-blue focus:border-transparent {{ 'bg-gray-100' if not current_user.is_authenticated else '' }} text-gray-900 placeholder-gray-500 bg-white">
                             <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
                                 <i class="fas fa-link text-gray-400"></i>
                             </div>
@@ -63,12 +69,14 @@
                                 Scan Depth
                             </label>
                             <select name="scan_depth" 
+                                    id="scan_depth"
                                     {% if not current_user.is_authenticated %}disabled{% endif %}
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyber-blue {{ 'bg-gray-100' if not current_user.is_authenticated else '' }}">
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyber-blue {{ 'bg-gray-100' if not current_user.is_authenticated else '' }} text-gray-900 bg-white">
                                 <option value="quick">Quick Scan (5-10 minutes)</option>
                                 <option value="standard" selected>Standard Scan (15-30 minutes)</option>
                                 <option value="deep">Deep Scan (45+ minutes)</option>
                             </select>
+                            <p id="scanDepthHelp" class="text-xs text-gray-500 mt-1 hidden">Enter a valid URL to enable scan options.</p>
                         </div>
 
                         <div>
@@ -76,27 +84,30 @@
                                 Scan Type
                             </label>
                             <select name="scan_type" 
+                                    id="scan_type"
                                     {% if not current_user.is_authenticated %}disabled{% endif %}
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyber-blue {{ 'bg-gray-100' if not current_user.is_authenticated else '' }}">
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyber-blue {{ 'bg-gray-100' if not current_user.is_authenticated else '' }} text-gray-900 bg-white">
                                 <option value="passive">Passive Scan Only</option>
                                 <option value="active" selected>Active Scan (Recommended)</option>
                                 <option value="full">Full Scan (Passive + Active)</option>
                             </select>
+                            <p id="scanTypeHelp" class="text-xs text-gray-500 mt-1 hidden">Enter a valid URL to enable scan options.</p>
                         </div>
                     </div>
 
-                    <div class="bg-blue-50 rounded-lg p-4">
-                        <h3 class="text-sm font-medium text-blue-800 mb-2">What we'll check:</h3>
-                        <ul class="text-sm text-blue-700 space-y-1">
-                            <li>• Cross-Site Scripting (XSS) vulnerabilities</li>
-                            <li>• SQL Injection and other injection attacks</li>
-                            <li>• Authentication and session management issues</li>
-                            <li>• Security headers and configuration problems</li>
-                            <li>• OWASP Top 10 vulnerabilities</li>
+                    <div class="bg-blue-50 rounded-lg p-4 mt-2">
+                        <h3 class="text-base font-bold text-blue-900 mb-3">What we'll check:</h3>
+                        <ul class="text-sm text-blue-800 space-y-2 pl-4 list-disc list-inside">
+                            <li><span class="font-semibold">Cross-Site Scripting (XSS)</span> vulnerabilities</li>
+                            <li><span class="font-semibold">SQL Injection</span> and other injection attacks</li>
+                            <li><span class="font-semibold">Authentication and session management</span> issues</li>
+                            <li><span class="font-semibold">Security headers</span> and configuration problems</li>
+                            <li><span class="font-semibold">OWASP Top 10</span> vulnerabilities</li>
                         </ul>
                     </div>
 
                     <button type="submit" 
+                            id="scanSubmitBtn"
                             {% if not current_user.is_authenticated %}disabled{% endif %}
                             class="w-full bg-cyber-blue text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center">
                         <i class="fas fa-search mr-2"></i>
@@ -199,9 +210,30 @@
 // Initialize WAS Scanner
 const wasScanner = new SecurityScanner('was');
 
+// Enable scan options only if URL is entered
+const urlInput = document.getElementById('target_url');
+const scanDepth = document.getElementById('scan_depth');
+const scanType = document.getElementById('scan_type');
+const scanDepthHelp = document.getElementById('scanDepthHelp');
+const scanTypeHelp = document.getElementById('scanTypeHelp');
+const scanSubmitBtn = document.getElementById('scanSubmitBtn');
+
+function toggleScanOptions() {
+    const urlVal = urlInput.value.trim();
+    const valid = urlVal.length > 0 && urlVal.startsWith('http');
+    scanDepth.disabled = !valid;
+    scanType.disabled = !valid;
+    scanSubmitBtn.disabled = !valid;
+    scanDepth.classList.toggle('bg-gray-100', !valid);
+    scanType.classList.toggle('bg-gray-100', !valid);
+    scanDepthHelp.classList.toggle('hidden', valid);
+    scanTypeHelp.classList.toggle('hidden', valid);
+}
+urlInput.addEventListener('input', toggleScanOptions);
+window.addEventListener('DOMContentLoaded', toggleScanOptions);
+
 document.getElementById('wasForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    
     const formData = new FormData(this);
     wasScanner.startScan('/api/scan/was', formData);
 });

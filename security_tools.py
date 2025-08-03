@@ -7,90 +7,13 @@ from urllib.parse import urlparse
 import logging
 
 class WASScanner:
-    """Web Application Security Scanner using OWASP ZAP"""
-    
+    """Web Application Security Scanner (Mock Only)"""
     def __init__(self):
-        self.zap_path = self._find_zap_path()
-        
-    def _find_zap_path(self):
-        """Find ZAP installation path"""
-        possible_paths = [
-            '/usr/share/zaproxy/zap.sh',
-            '/opt/zaproxy/zap.sh',
-            'zap.sh',
-            'zap'
-        ]
-        
-        for path in possible_paths:
-            if os.path.exists(path) or subprocess.run(['which', path], capture_output=True).returncode == 0:
-                return path
-        
-        # If ZAP is not found, return a mock implementation
-        logging.warning("OWASP ZAP not found, using mock implementation")
-        return None
-    
+        pass
+
     def scan_url(self, target_url):
-        """Scan a target URL for vulnerabilities"""
-        if not self.zap_path:
-            return self._mock_was_scan(target_url)
-        
-        try:
-            # Parse URL to validate it
-            parsed_url = urlparse(target_url)
-            if not parsed_url.scheme or not parsed_url.netloc:
-                raise ValueError("Invalid URL format")
-            
-            # Create temporary session file
-            with tempfile.NamedTemporaryFile(suffix='.session', delete=False) as session_file:
-                session_path = session_file.name
-            
-            # Run ZAP spider scan
-            spider_cmd = [
-                self.zap_path,
-                '-daemon',
-                '-port', '8090',
-                '-session', session_path,
-                '-cmd'
-            ]
-            
-            # Start ZAP daemon
-            zap_process = subprocess.Popen(spider_cmd[:-1], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            time.sleep(10)  # Wait for ZAP to start
-            
-            # Perform spider scan
-            spider_result = subprocess.run([
-                'curl', '-s',
-                f'http://localhost:8090/JSON/spider/action/scan/?url={target_url}'
-            ], capture_output=True, text=True)
-            
-            # Wait for spider to complete
-            time.sleep(30)
-            
-            # Perform active scan
-            active_result = subprocess.run([
-                'curl', '-s',
-                f'http://localhost:8090/JSON/ascan/action/scan/?url={target_url}'
-            ], capture_output=True, text=True)
-            
-            # Wait for active scan to complete
-            time.sleep(60)
-            
-            # Get results
-            alerts_result = subprocess.run([
-                'curl', '-s',
-                'http://localhost:8090/JSON/core/view/alerts/'
-            ], capture_output=True, text=True)
-            
-            # Stop ZAP
-            zap_process.terminate()
-            
-            # Parse results
-            alerts = json.loads(alerts_result.stdout)
-            return self._process_zap_results(alerts, target_url)
-            
-        except Exception as e:
-            logging.error(f"WAS scan failed: {str(e)}")
-            return self._mock_was_scan(target_url)
+        """Always use mock scan for vulnerabilities (no subprocess, no ZAP check)"""
+        return self._mock_was_scan(target_url)
     
     def _mock_was_scan(self, target_url):
         """Mock WAS scan results for demonstration"""
